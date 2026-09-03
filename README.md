@@ -46,6 +46,8 @@ python audit_salaires.py
   - `data['Rating'] == -1` → ne détecte rien.
   - `data['Rating'] < 0` → **34 valeurs négatives trouvées !**
 
+> **Note au passage** : `Founded` révèle **97 manquants** qui n'apparaissaient pas dans la boucle texte. Même raison que `Rating` — c'est une colonne numérique.
+
 ### Leçon retenue
 
 > L'égalité les ratait, l'infériorité les révèle.
@@ -53,3 +55,9 @@ python audit_salaires.py
 Sur des nombres décimaux (`float`), une comparaison d'**égalité stricte** (`== -1`) est fragile : elle rate toute valeur qui n'est pas *exactement* -1 (ex. -1.0 stocké différemment, arrondis, autres valeurs négatives sentinelles). Une comparaison d'**intervalle** (`< 0`, `<= -1`, etc.) est plus robuste pour détecter des valeurs aberrantes ou des données manquantes déguisées sur des colonnes numériques.
 
 **Bonne pratique** : préférer systématiquement les comparaisons d'intervalle aux égalités strictes lorsqu'on travaille sur des `float`.
+
+> **Note entretien** : « j'ai traité les cas particuliers plutôt que de les jeter » est une meilleure phrase que « j'ai supprimé ce qui posait problème ».
+
+> **Note entretien** : « 24 annonces exprimaient un taux horaire, incompatible avec une cible annuelle. Je les ai écartées plutôt que d'appliquer une conversion reposant sur des hypothèses non vérifiables. »
+
+> **Note entretien** : « Sur des données scrapées, j'ai rencontré quatre formats de salaire différents. J'ai traité chaque cas successivement, en mesurant d'abord son ampleur avant de décider de le corriger ou de l'écarter. »
