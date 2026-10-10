@@ -33,6 +33,23 @@ La cible est dérivée de la colonne `Salary Estimate` (extraction des bornes mi
    pip install pandas numpy matplotlib scikit-learn streamlit
    ```
 
+> **Note — le nom `pip` n'est pas le nom d'import** : on installe `scikit-learn`, mais on importe `sklearn`.
+>
+> ```python
+> import scikit-learn as sk   # ❌ SyntaxError : le tiret est lu comme une soustraction
+> import sklearn              # ✅ nom réel du module
+> ```
+>
+> Un nom de module Python doit être un identifiant valide : lettres, chiffres, underscores — jamais de tiret. Le nom du paquet sur PyPI (`scikit-learn`) et le nom du module importable (`sklearn`) sont deux choses distinctes. Autres exemples du même piège : `pip install pillow` → `import PIL`, `pip install beautifulsoup4` → `import bs4`, `pip install opencv-python` → `import cv2`.
+>
+> **En pratique**, on importe rarement `sklearn` en entier : `import sklearn` ne donne pas accès aux sous-modules. Il faut les importer explicitement :
+>
+> ```python
+> from sklearn.model_selection import train_test_split
+> from sklearn.linear_model import LinearRegression
+> from sklearn.metrics import mean_absolute_error
+> ```
+
 ## Utilisation
 
 ```powershell
@@ -77,6 +94,8 @@ Sur des nombres décimaux (`float`), une comparaison d'**égalité stricte** (`=
 > **Règle générale** : distribution symétrique → moyenne. Distribution asymétrique ou avec des extrêmes → médiane.
 
 > **Note entretien — écart-type** : un écart-type de **53** pour une médiane de **27** — la distribution est très étalée, signe de quelques valeurs extrêmes qui tirent vers le haut.
+
+> **Note entretien — périmètre** : « J'ai restreint le périmètre aux métiers de la data après avoir constaté que le scraping avait ramené des scientifiques de laboratoire. Le modèle est moins large mais plus fiable sur son domaine. »
 
 ## Mes trois arguments d'entretien, prêts à l'emploi
 
