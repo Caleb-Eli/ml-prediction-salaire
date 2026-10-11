@@ -220,6 +220,22 @@ def classer_poste(titre):
     else:
         return 'autres'
 
+
+# création de la fonction classer_poste pour regrouper les intitulés de poste en familles de métiers
+
+def classer_niveau(titre):
+    titre = titre.lower()
+    if 'senior' in titre or 'sr.' in titre:
+        return 'senior'
+    elif 'junior' in titre or 'jr.' in titre:
+        return 'junior'
+    elif 'lead' in titre:
+        return 'lead'
+    elif 'principal' in titre:
+        return 'principal'
+    else:
+        return 'standard'
+
 # on applique la fonction classer_poste à la colonne "Job Title" pour créer une nouvelle colonne "poste_famille"
 data["poste_famille"] = data["Job Title"].apply(classer_poste)
 
@@ -230,6 +246,12 @@ print(data["poste_famille"].value_counts())
 
 print("\nLes 15 intitulés de poste les plus fréquents pour la catégorie 'autres' :")
 print(data[data["poste_famille"] == "autres"]["Job Title"].value_counts().head(15))
+
+# on applique la fonction classer_niveau à la colonne "Job Title" pour créer une nouvelle colonne "niveau"
+data["niveau"] = data["Job Title"].apply(classer_niveau)
+print("\nVérification de la nouvelle colonne 'niveau' :")
+print(data["niveau"].value_counts())
+
 
 # ligne de filtrage puis vérification des nouvelles dimensions
 
@@ -243,7 +265,7 @@ print("\nSuppression de la colonne 'Job Title', devenue redondante :")
 data = data.drop(columns=['Job Title'])
 print(data.shape)
 
-# Vérification
+# Vérification 
 print(data.shape)
 print(data.isnull().sum().sum())
 
