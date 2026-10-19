@@ -79,13 +79,13 @@ Sur des nombres décimaux (`float`), une comparaison d'**égalité stricte** (`=
 
 **Bonne pratique** : préférer systématiquement les comparaisons d'intervalle aux égalités strictes lorsqu'on travaille sur des `float`.
 
-> **Note entretien** : « j'ai traité les cas particuliers plutôt que de les jeter » est une meilleure phrase que « j'ai supprimé ce qui posait problème ».
+> **Note** : « j'ai traité les cas particuliers plutôt que de les jeter » est une meilleure phrase que « j'ai supprimé ce qui posait problème ».
 
-> **Note entretien** : « 24 annonces exprimaient un taux horaire, incompatible avec une cible annuelle. Je les ai écartées plutôt que d'appliquer une conversion reposant sur des hypothèses non vérifiables. »
+> **Note** : « 24 annonces exprimaient un taux horaire, incompatible avec une cible annuelle. Je les ai écartées plutôt que d'appliquer une conversion reposant sur des hypothèses non vérifiables. »
 
-> **Note entretien** : « Sur des données scrapées, j'ai rencontré quatre formats de salaire différents. J'ai traité chaque cas successivement, en mesurant d'abord son ampleur avant de décider de le corriger ou de l'écarter. »
+> **Note** : « Sur des données scrapées, j'ai rencontré quatre formats de salaire différents. J'ai traité chaque cas successivement, en mesurant d'abord son ampleur avant de décider de le corriger ou de l'écarter. »
 
-> **Note entretien — moyenne vs médiane** : la moyenne fonctionne, mais la médiane est plus robuste — et voici pourquoi.
+> **Note — moyenne vs médiane** : la moyenne fonctionne, mais la médiane est plus robuste — et voici pourquoi.
 >
 > La moyenne est sensible aux valeurs extrêmes. Si quelques entreprises ont des notes très basses (1.0) ou très hautes (5.0), elles tirent la moyenne dans leur direction.
 >
@@ -93,9 +93,13 @@ Sur des nombres décimaux (`float`), une comparaison d'**égalité stricte** (`=
 >
 > **Règle générale** : distribution symétrique → moyenne. Distribution asymétrique ou avec des extrêmes → médiane.
 
-> **Note entretien — écart-type** : un écart-type de **53** pour une médiane de **27** — la distribution est très étalée, signe de quelques valeurs extrêmes qui tirent vers le haut.
+> **Note — écart-type** : un écart-type de **53** pour une médiane de **27** — la distribution est très étalée, signe de quelques valeurs extrêmes qui tirent vers le haut.
 
-> **Note entretien — périmètre** : « J'ai restreint le périmètre aux métiers de la data après avoir constaté que le scraping avait ramené des scientifiques de laboratoire. Le modèle est moins large mais plus fiable sur son domaine. »
+> **Note — périmètre** : « J'ai restreint le périmètre aux métiers de la data après avoir constaté que le scraping avait ramené des scientifiques de laboratoire. Le modèle est moins large mais plus fiable sur son domaine. »
+
+**note** - En regroupant les intitulés en familles, j’avais perdu l’information de séniorité. Je l’ai récupérée dans une colonne séparée : le R² est passé de 0.48 à 0.61.
+
+**note** - J’ai comparé trois modèles. Le Random Forest a donné les meilleurs résultats, avec une MAE de 13 800 $ contre 17 500 pour la régression linéaire. Le Gradient Boosting, souvent meilleur sur de gros volumes, n’a pas surperformé ici — avec 414 lignes d’entraînement, il manquait de données pour exprimer son avantage.
 
 ## Mes trois arguments d'entretien, prêts à l'emploi
 
